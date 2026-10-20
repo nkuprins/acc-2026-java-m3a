@@ -75,22 +75,27 @@ public class ConsoleMenu {
         }
 
         Animal animal;
-        switch (species) {
-            case "dog":
-                animal = new Dog(name, age);
-                break;
-            case "cat":
-                animal = new Cat(name, age);
-                break;
-            case "bird":
-                animal = new Bird(name, age);
-                break;
-            case "capybara":
-                animal = new Capybara(name, age);
-                break;
-            default:
-                System.out.println("Unknown species: " + species);
-                return;
+        try {
+            switch (species) {
+                case "dog":
+                    animal = new Dog(name, age);
+                    break;
+                case "cat":
+                    animal = new Cat(name, age);
+                    break;
+                case "bird":
+                    animal = new Bird(name, age);
+                    break;
+                case "capybara":
+                    animal = new Capybara(name, age);
+                    break;
+                default:
+                    System.out.println("Unknown species: " + species);
+                    return;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
         }
         shelter.addAnimal(animal);
         System.out.println("Added: " + animal);
