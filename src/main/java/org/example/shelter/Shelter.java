@@ -6,20 +6,20 @@ import org.example.model.Animal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shelter <T extends Animal>{
+public class Shelter<T extends Animal> {
     private final List<T> animals = new ArrayList<>();
 
-    public void addAnimal(T animal){
+    public void addAnimal(T animal) {
         animals.add(animal);
     }
 
-    public List<T> getAllAnimals(){
+    public List<T> getAllAnimals() {
         // Unmodifiable shallow copy so callers can't change the shelter's internal list
         return List.copyOf(animals);
     }
 
     // We did not really cover streams, but I would use them otherwise
-    public List<T> findBySpecies(String species){
+    public List<T> findBySpecies(String species) {
         List<T> result = new ArrayList<>();
         for (T animal : animals) {
             if (animal.getSpecies().equalsIgnoreCase(species)) {
@@ -30,7 +30,7 @@ public class Shelter <T extends Animal>{
     }
 
     // We did not really cover streams, but I would use them otherwise
-    public List<T> findAvailableAnimals(){
+    public List<T> findAvailableAnimals() {
         List<T> result = new ArrayList<>();
         for (T animal : animals) {
             if (animal.getAdoptionStatus() == AdoptionStatus.AVAILABLE) {
@@ -40,7 +40,7 @@ public class Shelter <T extends Animal>{
         return result;
     }
 
-    public void markAsAdopted(String id){
+    public void markAsAdopted(String id) {
         for (T animal : animals) {
             if (animal.getId().toString().equals(id)) {
                 animal.markAsAdopted();

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ConsoleMenu {
     private final Shelter<Animal> shelter;
-    private final Scanner scanner =  new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final List<MenuOption> options = List.of(
             new MenuOption(1, "Add animal"),
             new MenuOption(2, "List all animals"),
@@ -21,7 +21,7 @@ public class ConsoleMenu {
         this.shelter = shelter;
     }
 
-    public void start(){
+    public void start() {
         boolean running = true;
         while (running) {
             System.out.println();
@@ -60,7 +60,7 @@ public class ConsoleMenu {
         System.out.println("Goodbye!");
     }
 
-    private void addAnimal(){
+    private void addAnimal() {
         System.out.print("Species (dog/cat/bird/capybara): ");
         String species = scanner.nextLine().trim().toLowerCase();
         System.out.print("Name: ");
@@ -101,13 +101,13 @@ public class ConsoleMenu {
         System.out.println("Added: " + animal);
     }
 
-    private void findBySpecies(){
+    private void findBySpecies() {
         System.out.print("Species: ");
         String species = scanner.nextLine().trim();
         printAnimals(shelter.findBySpecies(species));
     }
 
-    private void markAsAdopted(){
+    private void markAsAdopted() {
         System.out.print("Animal id: ");
         String id = scanner.nextLine().trim();
         try {
@@ -118,7 +118,7 @@ public class ConsoleMenu {
         }
     }
 
-    private void printAnimals(List<Animal> animals){
+    private void printAnimals(List<Animal> animals) {
         if (animals.isEmpty()) {
             System.out.println("No animals found.");
             return;
@@ -128,7 +128,7 @@ public class ConsoleMenu {
         }
     }
 
-    private void printMenu(){
+    private void printMenu() {
         for (MenuOption option : options) {
             System.out.println(option.number() + ". " + option.label());
         }

@@ -3,7 +3,7 @@ package org.example.model;
 import lombok.Getter;
 
 @Getter
-public sealed abstract class Animal permits Dog,Cat,Bird,Capybara {
+public abstract sealed class Animal permits Dog, Cat, Bird, Capybara {
     private final AnimalId id;
     private String name;
     private int age;
@@ -26,7 +26,7 @@ public sealed abstract class Animal permits Dog,Cat,Bird,Capybara {
         this(new AnimalId(), name, age);
     }
 
-    public void markAsAdopted(){
+    public void markAsAdopted() {
         if (adoptionStatus == AdoptionStatus.ADOPTED) {
             throw new IllegalStateException("Animal is already adopted: " + id);
         }
@@ -36,7 +36,7 @@ public sealed abstract class Animal permits Dog,Cat,Bird,Capybara {
     public abstract String getSpecies();
 
     @Override
-    public String toString(){
+    public String toString() {
         return id + " | " + name + " | " + age + " years old | " + getSpecies() + " | " + adoptionStatus;
     }
 }
