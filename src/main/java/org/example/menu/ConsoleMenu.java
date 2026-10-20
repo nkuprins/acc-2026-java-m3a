@@ -105,7 +105,7 @@ public class ConsoleMenu {
         try {
             shelter.markAsAdopted(id);
             System.out.println("Animal marked as adopted.");
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IllegalStateException e) {
             System.out.println(e.getMessage());
         }
     }
