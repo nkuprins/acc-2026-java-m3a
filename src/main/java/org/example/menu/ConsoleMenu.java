@@ -61,7 +61,7 @@ public class ConsoleMenu {
     }
 
     private void addAnimal(){
-        System.out.print("Species (dog/cat/bird): ");
+        System.out.print("Species (dog/cat/bird/capybara): ");
         String species = scanner.nextLine().trim().toLowerCase();
         System.out.print("Name: ");
         String name = scanner.nextLine().trim();
@@ -84,6 +84,9 @@ public class ConsoleMenu {
                 break;
             case "bird":
                 animal = new Bird(name, age);
+                break;
+            case "capybara":
+                animal = new Capybara(name, age);
                 break;
             default:
                 System.out.println("Unknown species: " + species);
