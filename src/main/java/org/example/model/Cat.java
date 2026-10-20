@@ -5,6 +5,10 @@ public final class Cat extends Animal{
         super(id,name,age);
     }
 
+    public Cat(String name, int age){
+        super(name,age);
+    }
+
     @Override
     public String getSpecies(){
         return "Cat";

@@ -16,6 +16,10 @@ public sealed abstract class Animal permits Dog,Cat,Bird {
         this.adoptionStatus = AdoptionStatus.AVAILABLE;
     }
 
+    protected Animal(String name, int age) {
+        this(new AnimalId(), name, age);
+    }
+
     public void markAsAdopted(){
         if (adoptionStatus == AdoptionStatus.ADOPTED) {
             throw new IllegalStateException("Animal is already adopted: " + id);

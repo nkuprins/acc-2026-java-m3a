@@ -77,13 +77,13 @@ public class ConsoleMenu {
         Animal animal;
         switch (species) {
             case "dog":
-                animal = new Dog(new AnimalId(), name, age);
+                animal = new Dog(name, age);
                 break;
             case "cat":
-                animal = new Cat(new AnimalId(), name, age);
+                animal = new Cat(name, age);
                 break;
             case "bird":
-                animal = new Bird(new AnimalId(), name, age);
+                animal = new Bird(name, age);
                 break;
             default:
                 System.out.println("Unknown species: " + species);
