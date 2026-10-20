@@ -1,7 +1,10 @@
 package org.example.model;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.UUID;
 
+@EqualsAndHashCode
 public final class AnimalId {
     private final String value;
     public AnimalId() {

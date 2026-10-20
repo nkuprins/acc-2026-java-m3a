@@ -2,6 +2,7 @@ package org.example.shelter;
 
 import org.example.model.AdoptionStatus;
 import org.example.model.Animal;
+import org.example.model.AnimalId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +42,9 @@ public class Shelter<T extends Animal> {
     }
 
     public void markAsAdopted(String id) {
+        AnimalId animalId = new AnimalId(id);
         for (T animal : animals) {
-            if (animal.getId().toString().equals(id)) {
+            if (animal.getId().equals(animalId)) {
                 animal.markAsAdopted();
                 return;
             }
