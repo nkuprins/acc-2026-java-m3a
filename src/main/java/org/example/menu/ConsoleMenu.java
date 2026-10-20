@@ -9,6 +9,14 @@ import java.util.Scanner;
 public class ConsoleMenu {
     private final Shelter<Animal> shelter;
     private final Scanner scanner =  new Scanner(System.in);
+    private final List<MenuOption> options = List.of(
+            new MenuOption(1, "Add animal"),
+            new MenuOption(2, "List all animals"),
+            new MenuOption(3, "Find animals by species"),
+            new MenuOption(4, "List available animals"),
+            new MenuOption(5, "Mark animal as adopted"),
+            new MenuOption(0, "Exit")
+    );
     public ConsoleMenu(Shelter<Animal> shelter) {
         this.shelter = shelter;
     }
@@ -19,24 +27,30 @@ public class ConsoleMenu {
             System.out.println();
             printMenu();
             System.out.print("Choose an option: ");
-            String option = scanner.nextLine().trim();
+            int option;
+            try {
+                option = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid option.");
+                continue;
+            }
             switch (option) {
-                case "1":
+                case 1:
                     addAnimal();
                     break;
-                case "2":
+                case 2:
                     printAnimals(shelter.getAllAnimals());
                     break;
-                case "3":
+                case 3:
                     findBySpecies();
                     break;
-                case "4":
+                case 4:
                     printAnimals(shelter.findAvailableAnimals());
                     break;
-                case "5":
+                case 5:
                     markAsAdopted();
                     break;
-                case "0":
+                case 0:
                     running = false;
                     break;
                 default:
@@ -107,13 +121,8 @@ public class ConsoleMenu {
     }
 
     private void printMenu(){
-        System.out.println("""
-                1. Add animal
-                2. List all animals
-                3. Find animals by species
-                4. List available animals
-                5. Mark animal as adopted
-                0. Exit
-                """);
+        for (MenuOption option : options) {
+            System.out.println(option.number() + ". " + option.label());
+        }
     }
 }
