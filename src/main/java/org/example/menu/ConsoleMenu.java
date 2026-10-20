@@ -1,11 +1,13 @@
 package org.example.menu;
 
+import lombok.RequiredArgsConstructor;
 import org.example.model.*;
 import org.example.shelter.Shelter;
 
 import java.util.List;
 import java.util.Scanner;
 
+@RequiredArgsConstructor
 public class ConsoleMenu {
     private final Shelter<Animal> shelter;
     private final Scanner scanner = new Scanner(System.in);
@@ -17,9 +19,6 @@ public class ConsoleMenu {
             new MenuOption(5, "Mark animal as adopted"),
             new MenuOption(0, "Exit")
     );
-    public ConsoleMenu(Shelter<Animal> shelter) {
-        this.shelter = shelter;
-    }
 
     public void start() {
         boolean running = true;
